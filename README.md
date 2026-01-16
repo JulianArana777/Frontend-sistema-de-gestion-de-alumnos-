@@ -4,3 +4,5 @@ Crear un archivo .env y poner la siguiente variable:
 Comandos para ejecturar el proyecto: 
 
 docker compose up -d #Levantar frontend
+
+

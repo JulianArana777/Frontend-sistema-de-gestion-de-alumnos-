@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../../Api/Api";
 
+//Estado inicial de Nota
 export default function NotaForm() {
   const [data, setData] = useState({ 
     alumnoId: "", 
@@ -8,6 +9,7 @@ export default function NotaForm() {
     valor: "" 
   });
 
+  //Enviar info a la API 
   const registrar = async (e) => {
     e.preventDefault();
     try {

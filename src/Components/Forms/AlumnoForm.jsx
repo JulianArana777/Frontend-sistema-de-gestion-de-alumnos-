@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../../Api/Api";
 
 export default function AlumnoForm({ alumnoEdit, onFinish }) {
+  //Estado inicial del Alumno
   const [alumno, setAlumno] = useState({
     nombre: "",
     apellido: "",
@@ -9,23 +10,24 @@ export default function AlumnoForm({ alumnoEdit, onFinish }) {
     fechaNacimiento: ""
   });
 
-  useEffect(() => {
+  useEffect(() => { //Ejecutar Cambio cuando se presiona el boton guardar 
     if (alumnoEdit) setAlumno(alumnoEdit);
   }, [alumnoEdit]);
 
-  const handleChange = e => {
+  const handleChange = e => { // Modificar estado inicial
     setAlumno({ ...alumno, [e.target.name]: e.target.value });
   };
 
+  //Enviar info a la api 
   const guardar = async e => {
     e.preventDefault();
-    if (alumno.id) {
+    if (alumno.id) { // Si tiene id en la db actualizar
       await api.put(`/alumnos/${alumno.id}`, alumno);
-    } else {
+    } else { // Si no hay id en la db crear
       await api.post("/alumnos", alumno);
     }
     onFinish();
-    setAlumno({ nombre: "", apellido: "", email: "", fechaNacimiento: "" });
+    setAlumno({ nombre: "", apellido: "", email: "", fechaNacimiento: "" }); // Limpiar formulario
   };
 
   return (

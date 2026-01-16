@@ -2,10 +2,14 @@ import { useState } from "react";
 import api from "../../Api/Api";
 
 export default function NotaList() {
+
+  //Estados para obtener los filtros a usar para acceder a la nota correspondiente en el back
   const [alumnoId, setAlumnoId] = useState("");
   const [materiaId, setMateriaId] = useState("");
+  // Estado para almacenar el resultado de la búsqueda
   const [notas, setNotas] = useState([]);
 
+  // Consultar la Api asincronicamente
   const buscar = async () => {
     const res = await api.get(`/notas/alumno/${alumnoId}/materia/${materiaId}`);
     setNotas(res.data);
