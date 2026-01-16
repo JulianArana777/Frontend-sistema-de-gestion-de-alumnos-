@@ -24,7 +24,7 @@ export default function MateriaList({ onEdit, refreshTrigger }) {
       <ul>
         {materias.map(m => (
           <li key={m.id}>
-            ({m.codigo}) {m.nombre} Creditos: {m.creditos} 
+            ID: {m.id} ({m.codigo}) {m.nombre} Creditos: {m.creditos} 
             <button onClick={() => onEdit(m)}>Editar</button>
             <button onClick={() => eliminar(m.id)}>Eliminar</button>
           </li>
